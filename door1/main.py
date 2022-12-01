@@ -6,21 +6,17 @@ input_file = os.path.join(sys.path[0], "input.txt")
 with open(input_file, "r") as file:
     lines = file.readlines()
 
-elves = {}
-elf_number = 1
+unsorted_calories = []
 calories = 0
 for line in lines:
     if line != "\n":
         calories += int(line)
     else:
-        elves.update({f"elf{elf_number}": calories})
-        elf_number += 1
+        unsorted_calories.append(calories)
         calories = 0
 
-most_calories = 0
-for elf, calorie_count in elves.items():
-    if calorie_count > most_calories:
-        most_elf = elf
-        most_calories = calorie_count 
+unsorted_calories.sort(reverse=True)
+sorted_calories = unsorted_calories
 
-print(f"The elf with the most calories is: {most_elf} with {most_calories}")
+print(f"1st: {sorted_calories[0]}, 2nd: {sorted_calories[1]}, 3rd: {sorted_calories[2]}")
+print(f"Total of top 3: {sum(sorted_calories[0:3])}")
