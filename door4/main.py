@@ -23,7 +23,7 @@ for line in lines:
     common = list(set(id1_range).intersection(id2_range))
 
     if common:
-        overlaps += 1
+        overlaps += 1 
         
 print(f"fully contained:{fully_contained}")
 print(f"overlaps: {overlaps}")
