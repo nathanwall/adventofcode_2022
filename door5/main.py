@@ -27,19 +27,22 @@ def sort_crates(multiple_moves):
     return stacks
 
 input_file = os.path.join(sys.path[0], "input.txt")
+stacks_file = os.path.join(sys.path[0], "stacks.txt")
 
 with open(input_file, "r") as file:
     instructions = file.readlines()
 
-original_stacks = {1:["R","N","P","G"], 
-                   2:["T","J","B","L","C","S","V","H"],
-                   3:["T","D","B","M","N","L"],
-                   4:["R","V","P","S","B"],
-                   5:["G","C","Q","S","W","M","V","H"],
-                   6:["W","Q","S","C","D","B","J"],
-                   7:["F","Q","L"],
-                   8:["W","M","H","T","D","L","F","V"],
-                   9:["L","P","B","V","M","J","F"]}
+with open(stacks_file, "r") as file:
+    lines = file.readlines()
+
+original_stacks = {1:[], 2:[], 3:[], 4:[], 5:[], 6:[], 7:[], 8:[], 9:[]}
+for line in lines:
+    count = 1
+    for crate in line[1], line[5], line[9], line[13], line[17], line[21], line[25], line[29], line[33]:
+        stack = []
+        if len(crate.strip()) and not crate.isnumeric() > 0:
+            original_stacks[count].insert(0,crate)
+        count += 1 
 
 print(get_last_items(sort_crates(False)))
 print(get_last_items(sort_crates(True)))
