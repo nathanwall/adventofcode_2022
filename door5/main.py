@@ -39,7 +39,6 @@ original_stacks = {1:[], 2:[], 3:[], 4:[], 5:[], 6:[], 7:[], 8:[], 9:[]}
 for line in lines:
     count = 1
     for crate in line[1], line[5], line[9], line[13], line[17], line[21], line[25], line[29], line[33]:
-        stack = []
         if len(crate.strip()) and not crate.isnumeric() > 0:
             original_stacks[count].insert(0,crate)
         count += 1 
